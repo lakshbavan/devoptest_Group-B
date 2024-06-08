@@ -99,7 +99,7 @@
                     <span class="item-icon"></span>
                     <span class="item-text"
                       >Card
-                      <span class="cart-item-count">3</span>
+                      <span class="cart-item-count"></span>
                     </span>
                   </a>
                   <span></span>
@@ -512,6 +512,8 @@
       </div>
     </div>
     <!-- end section -->
+
+    
     <!-- section -->
     <div class="section padding_layout_1" style="padding: 50px 0">
       <div class="container">
@@ -557,6 +559,7 @@
       </div>
     </div>
     <!-- end section -->
+
     <!-- Modal -->
     <div class="modal fade" id="search_bar" role="dialog">
       <div class="modal-dialog">
@@ -602,9 +605,8 @@
         </div>
       </div>
     </div>
-    <!-- End Model search bar -->
-    <!-- End Model search bar -->
-    <!-- footer -->
+   
+
     <footer>
       <div class="container-fuild">
         <div class="cprt">
@@ -612,5 +614,45 @@
         </div>
       </div>
     </footer>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const addToCartButton = document.querySelector(".cart button[type='submit']");
+        addToCartButton.addEventListener("click", function (event) {
+          event.preventDefault();
+          
+          // Get product details
+          const productImage = document.querySelector(".product_detail_feature_img img").src;
+          const productName = document.querySelector(".product-heading h2").innerText;
+          const productPrice = document.querySelector(".product-detail-side .new-price").innerText;
+          const productQuantity = document.querySelector(".cart .quantity input[name='quantity']").value;
+    
+          // Create product object
+          const product = {
+            image: productImage,
+            name: productName,
+            price: productPrice,
+            quantity: productQuantity
+          };
+    
+          // Get existing cart items from local storage
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+          // Add new product to the cart
+          cart.push(product);
+    
+          // Save cart back to local storage
+          localStorage.setItem("cart", JSON.stringify(cart));
+    
+          // Redirect to cart page
+          window.location.href = "it_cart.html";
+        });
+      });
+    </script>
+    
+    
+    
+
   </body>
 </html>
