@@ -3547,11 +3547,13 @@ footer ul.social_icons {
 .contact_us_section .button_Section_cont {
   width: 30%;
   float: right;
+ 
 }
 
 .contact_us_section .button_Section_cont a {
   float: right;
   border: none;
+  /* color: #0163d2; */
 }
 
 .contact_us_section .btn.dark_gray_bt:hover,
